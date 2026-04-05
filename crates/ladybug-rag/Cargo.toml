@@ -5,6 +5,10 @@ edition.workspace = true
 license.workspace = true
 description = "Hybrid Graph RAG engine combining vector search, PageRank, and Louvain community detection"
 
+[features]
+default = []
+onnx = ["ort", "ndarray", "tokenizers", "hf-hub"]
+
 [dependencies]
 icebug = { path = "../icebug" }
 serde = { version = "1", features = ["derive"] }
@@ -13,6 +17,16 @@ sha2 = "0.10"
 regex = "1"
 uuid = { version = "1", features = ["v4"] }
 thiserror = "2"
+
+# ONNX embedding support (optional)
+ort = { version = "=2.0.0-rc.8", features = ["ndarray"], optional = true }
+ndarray = { version = "0.16", optional = true }
+tokenizers = { version = "0.21", optional = true }
+hf-hub = { version = "0.4", optional = true }
+
+[[example]]
+name = "onnx_demo"
+required-features = ["onnx"]
 
 [dev-dependencies]
 tokio = { version = "1", features = ["full"] }

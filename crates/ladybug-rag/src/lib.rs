@@ -12,6 +12,8 @@ pub mod chunker;
 pub mod embeddings;
 pub mod entities;
 pub mod graph_store;
+#[cfg(feature = "onnx")]
+pub mod onnx_embedder;
 pub mod rag;
 pub mod types;
 pub mod vector_store;
