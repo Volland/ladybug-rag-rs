@@ -1,0 +1,12 @@
+[workspace]
+members = [
+    "crates/icebug-sys",
+    "crates/icebug",
+    "crates/ladybug-rag",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"

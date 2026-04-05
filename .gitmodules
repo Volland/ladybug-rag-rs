@@ -1,0 +1,3 @@
+[submodule "vendor/icebug"]
+	path = vendor/icebug
+	url = https://github.com/Ladybug-Memory/icebug.git
