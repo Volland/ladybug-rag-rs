@@ -1,0 +1,13 @@
+graph LR
+    subgraph Knowledge Graph
+        A[Rust<br/>PR: 0.23] -->|RELATES_TO| B[Ownership<br/>PR: 0.18]
+        A -->|RELATES_TO| C[Memory Safety<br/>PR: 0.15]
+        B -->|RELATES_TO| C
+        D[Cargo<br/>PR: 0.12] -->|RELATES_TO| A
+        E[Traits<br/>PR: 0.09] -->|RELATES_TO| A
+        C -->|RELATES_TO| F[Concurrency<br/>PR: 0.08]
+    end
+
+    style A fill:#ff6b6b,color:#fff,stroke-width:3px
+    style B fill:#ff9999,color:#000
+    style C fill:#ffb3b3,color:#000

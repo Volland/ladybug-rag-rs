@@ -1,0 +1,19 @@
+erDiagram
+    CHUNK {
+        string id PK
+        string text
+        string source
+        int position
+        vector embedding
+    }
+    ENTITY {
+        string id PK
+        string label
+        string type
+        float pagerank
+        int community
+        vector embedding
+    }
+    CHUNK ||--o{ ENTITY : MENTIONS
+    ENTITY ||--o{ ENTITY : RELATES_TO
+    CHUNK ||--o| CHUNK : NEXT_CHUNK

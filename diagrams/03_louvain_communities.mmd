@@ -1,0 +1,25 @@
+graph TB
+    subgraph Community A: Systems Programming
+        R[Rust] --- O[Ownership]
+        R --- M[Memory Safety]
+        O --- M
+        R --- C[Concurrency]
+    end
+
+    subgraph Community B: Graph Algorithms
+        PR[PageRank] --- CD[Community Detection]
+        PR --- KG[Knowledge Graphs]
+        CD --- L[Louvain]
+        KG --- GD[Graph Databases]
+    end
+
+    subgraph Community C: Build Tools
+        CA[Cargo] --- D[Dependencies]
+        CA --- T[Testing]
+    end
+
+    R -.-|bridge edge| PR
+
+    style R fill:#ff6b6b,color:#fff
+    style PR fill:#4a9eff,color:#fff
+    style CA fill:#51cf66,color:#fff

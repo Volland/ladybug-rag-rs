@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant Doc as Document
+    participant CH as Chunker
+    participant EMB as Embedder
+    participant EXT as Entity Extractor
+    participant VS as Vector Store
+    participant GS as Graph Store (icebug)
+    participant ALG as Graph Algorithms
+
+    Doc->>CH: raw text
+    CH->>CH: split into paragraphs (2048 chars, 200 overlap)
+    loop For each chunk
+        CH->>EMB: chunk text
+        EMB-->>VS: embedding vector (384-dim)
+        CH->>EXT: chunk text
+        EXT->>EXT: regex: capitalized noun phrases
+        EXT->>GS: add entity nodes
+        EXT->>GS: add MENTIONS edges (chunk → entity)
+        EXT->>EXT: sentence co-occurrence
+        EXT->>GS: add RELATES_TO edges (entity → entity)
+    end
+    CH->>GS: add NEXT_CHUNK edges (sequential order)
+    Note over ALG: Post-ingestion processing
+    GS->>ALG: compute PageRank (damping=0.85)
+    GS->>ALG: compute Louvain communities (gamma=1.0)
+    ALG-->>GS: entity scores + community assignments

@@ -1,0 +1,35 @@
+graph TB
+    subgraph Ingestion
+        D[Documents] --> CH[Text Chunker]
+        CH --> EMB[Embedder]
+        CH --> EXT[Entity Extractor]
+        EMB --> VS[Vector Store<br/>HNSW Index]
+        EXT --> KG[Knowledge Graph<br/>icebug]
+        EXT --> REL[Relation Extractor]
+        REL --> KG
+    end
+
+    subgraph Graph Processing
+        KG --> PR[PageRank<br/>Entity Importance]
+        KG --> LV[Louvain<br/>Community Detection]
+    end
+
+    subgraph Query Pipeline
+        Q[Query] --> QE[Query Embedding]
+        QE --> VSS[Vector Search]
+        QE --> ESS[Entity Seed Search]
+        VS --> VSS
+        ESS --> GE[Graph Expansion<br/>+ PageRank Weighting]
+        KG --> GE
+        PR --> GE
+        VSS --> RRF[Reciprocal Rank<br/>Fusion]
+        GE --> RRF
+        RRF --> CTX[Context Builder]
+        CTX --> LLM[LLM Prompt]
+    end
+
+    style VS fill:#4a9eff,color:#fff
+    style KG fill:#ff6b6b,color:#fff
+    style RRF fill:#51cf66,color:#fff
+    style PR fill:#ffd43b,color:#000
+    style LV fill:#ffd43b,color:#000

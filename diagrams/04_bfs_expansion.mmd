@@ -1,0 +1,23 @@
+graph LR
+    subgraph "Hop 0: Seed Entities"
+        E1["Memory Safety<br/>(seed)"]
+    end
+
+    subgraph "Hop 1: Direct Neighbors"
+        E1 -->|RELATES_TO| E2[Ownership]
+        E1 -->|RELATES_TO| E3[Rust]
+        E1 ---|MENTIONED_IN| C1[Chunk 2]
+    end
+
+    subgraph "Hop 2: Extended Reach"
+        E2 ---|MENTIONED_IN| C2[Chunk 1]
+        E3 -->|RELATES_TO| E4[Concurrency]
+        E3 ---|MENTIONED_IN| C3[Chunk 3]
+        E4 ---|MENTIONED_IN| C4[Chunk 5]
+    end
+
+    style E1 fill:#ff6b6b,color:#fff,stroke-width:3px
+    style C1 fill:#4a9eff,color:#fff
+    style C2 fill:#4a9eff,color:#fff
+    style C3 fill:#4a9eff,color:#fff
+    style C4 fill:#4a9eff,color:#fff

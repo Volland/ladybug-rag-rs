@@ -1,0 +1,46 @@
+graph TB
+    subgraph "ladybug-rag (RAG Engine)"
+        RAG[HybridGraphRag]
+        CHK[chunker]
+        ENT[entities]
+        EMB[embeddings]
+        GS[graph_store]
+        VST[vector_store]
+        RRF[rrf_fusion]
+    end
+
+    subgraph "icebug (Safe Rust API)"
+        G[Graph]
+        PR[PageRank]
+        LV[Louvain + Partition]
+        BFS[Bfs]
+    end
+
+    subgraph "icebug-sys (FFI Layer)"
+        C_WRAP[icebug_c.h / .cpp]
+        FFI[extern C declarations]
+    end
+
+    subgraph "icebug C++ (vendor)"
+        NK[NetworKit Engine<br/>200+ algorithms<br/>OpenMP parallelism]
+    end
+
+    RAG --> GS
+    RAG --> VST
+    RAG --> CHK
+    RAG --> ENT
+    RAG --> EMB
+    RAG --> RRF
+    GS --> G
+    GS --> PR
+    GS --> LV
+    G --> FFI
+    PR --> FFI
+    LV --> FFI
+    BFS --> FFI
+    FFI --> C_WRAP
+    C_WRAP --> NK
+
+    style RAG fill:#51cf66,color:#fff
+    style G fill:#4a9eff,color:#fff
+    style NK fill:#ff6b6b,color:#fff

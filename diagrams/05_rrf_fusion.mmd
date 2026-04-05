@@ -1,0 +1,27 @@
+graph LR
+    subgraph "Vector Search Ranking"
+        V1["#1 Chunk A<br/>cos=0.92"]
+        V2["#2 Chunk C<br/>cos=0.87"]
+        V3["#3 Chunk B<br/>cos=0.81"]
+    end
+
+    subgraph "Graph Expansion Ranking"
+        G1["#1 Chunk B<br/>PR=0.23"]
+        G2["#2 Chunk D<br/>PR=0.18"]
+        G3["#3 Chunk A<br/>PR=0.12"]
+    end
+
+    subgraph "RRF Fused Ranking"
+        F1["#1 Chunk A<br/>1/61 + 1/63 = 0.032"]
+        F2["#2 Chunk B<br/>1/63 + 1/61 = 0.032"]
+        F3["#3 Chunk C<br/>1/62 = 0.016"]
+        F4["#4 Chunk D<br/>1/62 = 0.016"]
+    end
+
+    V1 & G3 --> F1
+    V3 & G1 --> F2
+    V2 --> F3
+    G2 --> F4
+
+    style F1 fill:#51cf66,color:#fff,stroke-width:3px
+    style F2 fill:#51cf66,color:#fff
