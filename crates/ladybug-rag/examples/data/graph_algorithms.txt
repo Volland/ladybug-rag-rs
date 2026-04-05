@@ -1,0 +1,15 @@
+Graph Algorithms are fundamental tools in computer science for analyzing relationships and networks. They operate on graphs consisting of nodes (vertices) and edges (connections between nodes). Graphs can be directed or undirected, weighted or unweighted.
+
+PageRank was originally developed by Larry Page and Sergey Brin at Stanford University. It assigns importance scores to nodes based on the structure of incoming links. A node receives a higher PageRank score when it is linked to by other important nodes. PageRank is widely used beyond web search, including in citation analysis, social network influence, and knowledge graph ranking.
+
+Community Detection identifies groups of densely connected nodes within a graph. The Louvain Algorithm is one of the most popular Community Detection methods. It optimizes modularity through a two-phase iterative process: first assigning nodes to local communities, then aggregating the graph. The Louvain Algorithm scales well to large networks with millions of nodes.
+
+Breadth First Search (BFS) explores a graph level by level from a starting node. It finds the shortest path in unweighted graphs and is used for connectivity analysis. BFS is a building block for many other graph algorithms.
+
+Graph Centrality measures how important or influential a node is within a network. Betweenness Centrality counts how often a node appears on shortest paths between other nodes. Closeness Centrality measures how close a node is to all other nodes. Degree Centrality simply counts the number of connections a node has.
+
+Knowledge Graphs represent information as entities and relationships. They combine structured data with graph topology to enable semantic reasoning. Graph algorithms like PageRank and Community Detection enhance knowledge graph applications by identifying important entities and discovering topic clusters.
+
+Hybrid Graph RAG combines vector similarity search with graph-based retrieval. Vector search finds semantically similar content using embeddings. Graph traversal discovers related content through entity relationships. PageRank weights entities by importance, and Community Detection groups related concepts. Reciprocal Rank Fusion merges the ranked lists from both retrieval methods.
+
+Graph Databases like LadybugDB provide native storage and querying for graph-structured data. They support property graphs with labeled nodes, typed relationships, and key-value properties on both. Graph query languages like Cypher enable expressive pattern matching and traversal. LadybugDB additionally supports vector indexing with HNSW for hybrid graph-vector workloads.

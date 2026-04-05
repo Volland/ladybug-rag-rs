@@ -1,0 +1,15 @@
+Rust is a systems programming language focused on safety, speed, and concurrency. Unlike C and C++, Rust achieves memory safety without relying on garbage collection. Instead, it uses an innovative ownership system enforced at compile time.
+
+The Ownership System is the core of Rust's memory safety guarantees. Every value in Rust has a single owner, and the value is dropped when the owner goes out of scope. This eliminates entire classes of bugs like dangling pointers, double frees, and use-after-free errors.
+
+Borrowing and Lifetimes complement the Ownership System. References allow temporary access to data without transferring ownership. The borrow checker ensures that references never outlive the data they point to, preventing data races at compile time.
+
+Cargo is Rust's build system and package manager. It handles dependency resolution, compilation, testing, and documentation generation. Projects are configured through Cargo.toml manifest files that declare dependencies and build settings.
+
+Traits define shared behavior in Rust, similar to interfaces in Java or type classes in Haskell. They enable polymorphism through both static dispatch via generics and dynamic dispatch via trait objects. The standard library defines essential traits like Iterator, Clone, and Display.
+
+Concurrency in Rust is designed to be fearless. The type system prevents data races at compile time. Channels provide message passing between threads. The Arc and Mutex types enable safe shared-state concurrency patterns.
+
+Error Handling in Rust uses the Result and Option types instead of exceptions. The question mark operator provides ergonomic error propagation. This approach makes error paths explicit and ensures they are handled by the programmer.
+
+The Rust Standard Library provides fundamental types like Vec, String, HashMap, and BTreeMap. It includes modules for I/O operations, filesystem access, networking, and multi-threading. The standard library is intentionally minimal, with additional functionality available through crates on crates.io.
