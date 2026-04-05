@@ -1,0 +1,44 @@
+graph TB
+    subgraph "Before Louvain: Tangled Entity Soup"
+        direction LR
+        X1[Rust] --- X2[PageRank]
+        X1 --- X3[Ownership]
+        X2 --- X4[Community]
+        X3 --- X5[Safety]
+        X4 --- X6[Graph]
+        X5 --- X1
+        X6 --- X2
+        X1 --- X7[Cargo]
+        X7 --- X8[Build]
+        X6 --- X9[Traversal]
+    end
+
+    subgraph "After Louvain: Clear Topic Clusters"
+        subgraph "Topic A: Language Core"
+            A1[Rust] --- A2[Ownership]
+            A1 --- A3[Safety]
+            A2 --- A3
+        end
+
+        subgraph "Topic B: Graph Analysis"
+            B1[PageRank] --- B2[Community]
+            B1 --- B3[Graph]
+            B3 --- B4[Traversal]
+        end
+
+        subgraph "Topic C: Tooling"
+            C1[Cargo] --- C2[Build]
+        end
+
+        A1 -.-|"bridge"| B1
+
+        style A1 fill:#ff6b6b,color:#fff
+        style A2 fill:#ff6b6b,color:#fff
+        style A3 fill:#ff6b6b,color:#fff
+        style B1 fill:#4a9eff,color:#fff
+        style B2 fill:#4a9eff,color:#fff
+        style B3 fill:#4a9eff,color:#fff
+        style B4 fill:#4a9eff,color:#fff
+        style C1 fill:#51cf66,color:#fff
+        style C2 fill:#51cf66,color:#fff
+    end

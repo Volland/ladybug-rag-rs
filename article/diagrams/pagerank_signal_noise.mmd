@@ -1,0 +1,29 @@
+graph LR
+    subgraph "Without PageRank: All Entities Equal"
+        A1["Rust"] --- B1["Error"]
+        A1 --- C1["Ownership"]
+        A1 --- D1["The"]
+        A1 --- E1["Safety"]
+        A1 --- F1["Code"]
+
+        style A1 fill:#cccccc
+        style B1 fill:#cccccc
+        style C1 fill:#cccccc
+        style D1 fill:#cccccc
+        style E1 fill:#cccccc
+        style F1 fill:#cccccc
+    end
+
+    subgraph "With PageRank: Signal Emerges"
+        A2["Rust<br/>PR: 0.28"] --- C2["Ownership<br/>PR: 0.22"]
+        A2 --- E2["Safety<br/>PR: 0.19"]
+        A2 --- B2["Error<br/>PR: 0.11"]
+        C2 --- E2
+        A2 --- F2["Code<br/>PR: 0.08"]
+
+        style A2 fill:#ff6b6b,color:#fff,stroke-width:4px
+        style C2 fill:#ff8888,color:#fff,stroke-width:3px
+        style E2 fill:#ffaaaa,color:#000,stroke-width:2px
+        style B2 fill:#ffcccc,color:#000
+        style F2 fill:#ffe0e0,color:#000
+    end

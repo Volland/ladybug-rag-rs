@@ -1,0 +1,42 @@
+graph LR
+    subgraph "Stage 1: Ingest"
+        I1["Split into Chunks"]
+        I2["Extract Entities"]
+        I3["Find Relations"]
+        I1 --> I2 --> I3
+    end
+
+    subgraph "Stage 2: Index"
+        IDX1["HNSW Vector Index<br/>(chunks + entities)"]
+        IDX2["Graph Edges<br/>(MENTIONS, RELATES_TO)"]
+    end
+
+    subgraph "Stage 3: Analyze"
+        A1["PageRank<br/>(importance)"]
+        A2["Louvain<br/>(communities)"]
+    end
+
+    subgraph "Stage 4: Retrieve"
+        R1["Vector Search"]
+        R2["Graph Expansion"]
+        R3["RRF Fusion"]
+        R1 & R2 --> R3
+    end
+
+    subgraph "Stage 5: Assemble"
+        C1["Context Builder<br/>+ Neighbor Chunks<br/>+ Entity Labels"]
+    end
+
+    I3 --> IDX1 & IDX2
+    IDX2 --> A1 & A2
+    IDX1 --> R1
+    A1 & IDX2 --> R2
+    R3 --> C1
+
+    style I1 fill:#ffd43b,color:#000
+    style IDX1 fill:#4a9eff,color:#fff
+    style IDX2 fill:#ff6b6b,color:#fff
+    style A1 fill:#51cf66,color:#fff
+    style A2 fill:#51cf66,color:#fff
+    style R3 fill:#9775fa,color:#fff
+    style C1 fill:#f783ac,color:#fff

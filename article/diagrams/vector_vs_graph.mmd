@@ -1,0 +1,26 @@
+graph TB
+    subgraph "Vector Search Alone"
+        Q1["Query: 'memory safety'"] --> E1["Embed Query"]
+        E1 --> NN["Find Nearest<br/>Neighbors"]
+        NN --> R1["Chunk about<br/>memory safety"]
+        NN --> R2["Chunk about<br/>safe code"]
+        NN --> R3["Chunk about<br/>safety protocols"]
+        R3 -.->|"false positive:<br/>wrong domain"| X["❌"]
+    end
+
+    subgraph "Graph-Enhanced Search"
+        Q2["Same Query"] --> E2["Embed Query"]
+        E2 --> NN2["Vector Search<br/>+ Entity Seeds"]
+        NN2 --> S1["Entity: Memory Safety"]
+        S1 -->|"RELATES_TO"| S2["Entity: Ownership"]
+        S1 -->|"RELATES_TO"| S3["Entity: Borrow Checker"]
+        S2 -->|"MENTIONED_IN"| C1["Chunk: ownership rules"]
+        S3 -->|"MENTIONED_IN"| C2["Chunk: compile-time checks"]
+        S1 -->|"MENTIONED_IN"| C3["Chunk: memory safety"]
+    end
+
+    style X fill:#ff6b6b,color:#fff
+    style C1 fill:#51cf66,color:#fff
+    style C2 fill:#51cf66,color:#fff
+    style C3 fill:#51cf66,color:#fff
+    style S1 fill:#ffd43b,color:#000,stroke-width:3px

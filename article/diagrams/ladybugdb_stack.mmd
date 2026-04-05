@@ -1,0 +1,35 @@
+graph TB
+    subgraph "LadybugDB — Unified Graph + Vector Engine"
+        subgraph "Storage Layer"
+            PG["Property Graph<br/>Nodes, Edges, Properties"]
+            VI["HNSW Vector Index<br/>Cosine Similarity"]
+            FT["BM25 Full-Text<br/>Keyword Search"]
+        end
+
+        subgraph "Query Layer"
+            CY["Cypher Queries<br/>Pattern Matching"]
+            VS["Vector Search<br/>Semantic Similarity"]
+            TQ["Text Search<br/>Keyword Matching"]
+        end
+
+        subgraph "Algorithm Layer (icebug)"
+            PR["PageRank<br/>Importance"]
+            LV["Louvain<br/>Communities"]
+            BFS["BFS/DFS<br/>Traversal"]
+            BC["Betweenness<br/>Centrality"]
+        end
+
+        CY --> PG
+        VS --> VI
+        TQ --> FT
+        PR & LV & BFS & BC --> PG
+    end
+
+    APP["Application"] --> CY & VS & TQ
+    APP -.->|"algo extension"| PR & LV
+
+    style PG fill:#ff6b6b,color:#fff
+    style VI fill:#4a9eff,color:#fff
+    style FT fill:#ffd43b,color:#000
+    style PR fill:#51cf66,color:#fff
+    style LV fill:#51cf66,color:#fff

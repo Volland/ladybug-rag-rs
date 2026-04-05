@@ -1,0 +1,21 @@
+graph LR
+    subgraph "The Information Explosion"
+        D1[Doc 1] & D2[Doc 2] & D3[Doc 3] & D4["..."] & D5[Doc N]
+    end
+
+    subgraph "Traditional RAG"
+        D1 & D2 & D3 & D4 & D5 --> EMB[Embed Everything]
+        EMB --> FLAT["Flat Vector Space<br/>No Structure<br/>No Relationships"]
+        FLAT --> Q1["Query: How does X<br/>relate to Y?"]
+        Q1 --> FAIL["❌ Nearest neighbors<br/>miss the connection"]
+    end
+
+    subgraph "Hybrid Graph RAG"
+        D1 & D2 & D3 & D4 & D5 --> KG["Knowledge Graph<br/>+ Vector Index"]
+        KG --> Q2["Same Query"]
+        Q2 --> WIN["✓ Follows relationships<br/>across documents"]
+    end
+
+    style FAIL fill:#ff6b6b,color:#fff
+    style WIN fill:#51cf66,color:#fff
+    style KG fill:#4a9eff,color:#fff

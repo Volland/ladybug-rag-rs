@@ -1,0 +1,23 @@
+graph LR
+    subgraph "How Retrieval Quality Scales with Corpus Size"
+        direction TB
+        S1["50 docs"] --> S2["500 docs"] --> S3["5,000 docs"] --> S4["50,000 docs"]
+    end
+
+    subgraph "Vector-Only RAG"
+        V1["Good"] --> V2["OK"] --> V3["Noisy"] --> V4["Drowning<br/>in false positives"]
+    end
+
+    subgraph "Hybrid Graph RAG"
+        G1["Good"] --> G2["Better"] --> G3["Much Better"] --> G4["Best<br/>denser graph = richer signal"]
+    end
+
+    S1 --> V1 & G1
+    S2 --> V2 & G2
+    S3 --> V3 & G3
+    S4 --> V4 & G4
+
+    style V3 fill:#ffaaaa,color:#000
+    style V4 fill:#ff6b6b,color:#fff
+    style G3 fill:#85e085,color:#000
+    style G4 fill:#51cf66,color:#fff

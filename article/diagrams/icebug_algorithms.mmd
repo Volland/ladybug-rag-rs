@@ -1,0 +1,47 @@
+graph TB
+    subgraph "icebug — Graph Algorithm Engine"
+        subgraph "Centrality (41 algorithms)"
+            PR[PageRank]
+            BT[Betweenness]
+            CL[Closeness]
+            EV[Eigenvector]
+            KZ[Katz]
+        end
+
+        subgraph "Community Detection (41 algorithms)"
+            LV[Louvain / PLM]
+            LD[Leiden]
+            LP[Label Propagation]
+            LF[LFM Overlapping]
+        end
+
+        subgraph "Distance & Paths"
+            BFS[BFS]
+            DIJ[Dijkstra]
+            APSP[All-Pairs SP]
+            AST[A*]
+        end
+
+        subgraph "Structure"
+            CC[Connected Components]
+            SP[Sparsification]
+            MT[Matching]
+        end
+    end
+
+    subgraph "Used in Hybrid RAG"
+        RAG_PR["PageRank → Entity Importance"]
+        RAG_LV["Louvain → Topic Clusters"]
+        RAG_BFS["BFS → Graph Expansion"]
+    end
+
+    PR --> RAG_PR
+    LV --> RAG_LV
+    BFS --> RAG_BFS
+
+    style PR fill:#ff6b6b,color:#fff,stroke-width:3px
+    style LV fill:#4a9eff,color:#fff,stroke-width:3px
+    style BFS fill:#51cf66,color:#fff,stroke-width:3px
+    style RAG_PR fill:#ff6b6b,color:#fff
+    style RAG_LV fill:#4a9eff,color:#fff
+    style RAG_BFS fill:#51cf66,color:#fff
